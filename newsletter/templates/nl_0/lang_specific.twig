@@ -1,0 +1,95 @@
+{% extends base_tmpl %}
+
+{% set nl_no = 'NL0' %}
+
+
+{# BODY & SUBJECT LINE #}
+
+{% if lang_code == 'se' %}
+
+	{# Sweden #}
+	{% set subject_line_text = '' %}
+	{% set body_text = '' %}
+
+
+{% elseif lang_code == 'no' %}
+
+	{# Norway #}
+	{% set subject_line_text = '' %}
+	{% set body_text = '' %}
+
+
+{% elseif lang_code == 'dk' %}
+
+	{# Denmark #}
+	{% set subject_line_text = '' %}
+	{% set body_text = '' %}
+
+
+{% elseif lang_code == 'fi' %}
+
+	{# Finland #}
+	{% set subject_line_text = '' %}
+	{% set body_text = '' %}
+
+
+{% endif %}
+
+
+{# MAIN CONTENT #}
+
+{% block main_content %}
+
+	{# Include base template main content #}
+	{{- parent() }}
+
+	{#
+
+	{% if lang_code == 'se' %}
+		{% set lang = 'sv_SE' %}
+	{% elseif lang_code == 'no' %}
+		{% set lang = 'no_NO' %}
+	{% elseif lang_code == 'dk' %}
+		{% set lang = 'da_DK' %}
+	{% elseif lang_code == 'fi' %}
+		{% set lang = 'fi_FI' %}
+	{% endif %}
+
+	{% if lang_code == 'se' %}
+	{% elseif lang_code == 'no' %}
+	{% elseif lang_code == 'dk' %}
+	{% elseif lang_code == 'fi' %}
+	{% endif %}
+
+	{% if lang_code != 'se' %}
+	{% else %}
+	{% endif %}
+
+	{% if lang_code == 'se' %}
+	{% else %}
+	{% endif %}
+
+	#}
+
+	{{ content.item( _context, 'row',
+		'promocode', 'startpage' ) }}
+
+	{{ content.item( _context, 'row',
+		'promocode', '/control/promotions' ) }}
+
+	{{ content.item( _context, 'row',
+		'mainoffer', '/control/category/~category_id=' ) }}
+
+	{{ content.item( _context, 'row',
+		'mainoffer', '/control/product/~product_id=' ) }}
+
+	{{ content.item( _context, 'row',
+		'gift' ) }}
+
+	{# {{ content.item( _context, 'row',
+		'offer', '/control/openset/~product_id=' ~ lang_code|upper ~ 'OSXXX' ) }}
+
+	{{ content.item( _context, 'row',
+		'offer', '/control/dynpage/~struct=infopage/~page=' ) }} #}
+
+{% endblock %}

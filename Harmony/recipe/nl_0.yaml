@@ -1,0 +1,55 @@
+---
+base: &base
+
+  # Parent folder
+  campaign_name: Camp_VPI_2018
+
+  # For searching by month
+  tags:
+    - camp_1801
+
+  # Segements
+  send_to:
+    - name: Seg_std_VPI_default_I0
+      type: RULE
+    - name: Seg_std_VPI_default_I1
+      type: RULE
+    - name: Seg_std_VPI_default_I2
+      type: RULE
+    - name: Seg_std_VPI_default_Passives
+      type: RULE
+
+  proofers:
+    - snezana.gusatovic@yves-rocher.se
+    - snezana.gusatovic@gmail.com
+    - richard.arthursson@yves-rocher.se
+    - richard.arthursson@communityisland.com
+
+  send_date: 2018-01-01 00:00
+
+
+# Newsletter
+sweden:
+- html: NL0/jan18_0_se.html
+  name: 1801_NL0__se
+  <<: *base
+
+
+norway:
+- html: NL0/jan18_0_no.html
+  name: 1801_NL0__no
+  <<: *base
+
+
+denmark:
+- html: NL0/jan18_0_dk.html
+  name: 1801_NL0__dk
+  <<: *base
+
+
+finland:
+- html: NL0/jan18_0_fi.html
+  name: 1801_NL0__fi
+  # override_time: true
+  <<: *base
+...

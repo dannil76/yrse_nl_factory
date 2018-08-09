@@ -1,0 +1,340 @@
+{% import _self as content %}
+
+{# campaign base template #}
+
+{# CAMPAIGN EXPIRE DATE #}
+{% if lang_code == 'se' %}
+
+	{# Sweden #}
+	{% set campaign_date = '' %}
+
+
+{% elseif lang_code == 'no' %}
+
+	{# Norway #}
+	{% set campaign_date = '' %}
+
+
+{% elseif lang_code == 'dk' %}
+
+	{# Denmark #}
+	{% set campaign_date = '' %}
+
+
+{% elseif lang_code == 'fi' %}
+
+	{# Finland #}
+	{% set campaign_date = '' %}
+
+
+{% endif %}
+
+
+{# Harmony #}
+{% set unsubscribe_mail = '${EmailAddress}' %}
+{% set hosted_mail = "[@Hosted Type='HTML'/]" %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- !! DO NOT EDIT !! -->
+<!-- SUBJECT_LINE: {{ subject_line_text|raw }} -->
+<!-- PRE_HEADER: {{ body_text|raw }} -->
+<!-- HTML_PREMAILED_PATH: {{ html_premailed_path }} -->
+<!-- CAMPAIGN_NAME: {{ campaign_name }} -->
+<!-- TRACKER_CODE: {{ nlt_tracker }} -->
+<!-- http://pictures.yvesrocher.com/{% if lang_code == 'fi' %}FI{% else %}SE{% endif %}/{{ nlt_tracker }}/{{ lang_code }}/images -->
+<!-- !! DO NOT EDIT !! -->
+<html>
+<head>
+<title>Yves Rocher - {{ lang_code|upper }}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+
+	{% set text_color = '#878585' %}
+
+	.realbody {
+		margin: 0;
+		padding: 0;
+	}
+
+	.realimg {
+		border: 0;
+		display: block;
+	}
+
+	.body {
+		background: #ffffff;
+		width: 100%;
+		height: 100%;
+	}
+
+	.pre-content {
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
+
+	.pre-content table:first-child {
+		width: 100%;
+	}
+
+	.pre-content td {
+		text-align: center;
+	}
+
+	.pre-content-text {
+		color: {{ text_color }};
+		font-family: sans-serif;
+		font-size: 11px;
+	}
+
+	.pre-content-text a {
+		color: {{ text_color }};
+	}
+
+	.body-wrapper {
+		padding-bottom: 30px;
+		text-align: center;
+	}
+
+	.template-wrapper {
+		margin: auto;
+		width: 600px;
+	}
+
+	.footer-text {
+		background: #ffffff;
+		color: {{ text_color }};
+		font-family: sans-serif;
+		font-size: 14px;
+		text-align: center;
+		padding: 30px;
+	}
+
+	.footer-text a {
+		color: {{ text_color }};
+	}
+
+	.recipient-email {
+		text-transform: lowercase;
+	}
+{% block css_styles %}
+{% endblock %}
+</style>
+</head>
+<body class="realbody">
+<table class="body" cellpadding="0" cellspacing="0" border="0">
+<tr>
+	<td class="body-wrapper">
+	  	<table class="template-wrapper" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="pre-content">
+				{% if local_proof %}
+				<!-- SUBJECT LINE PROOF BLOCK START -->
+				<div style="border:3px solid red;margin-top:5px;margin-bottom:15px;font-family:sans-serif;">
+					<h4 style="margin-bottom:0;">{{ nlt_tracker|replace({'_': ' '}) }} {{ lang_code|upper }}</h4>
+					<p style="margin-top:20px;margin-bottom:8px;font-size:.8em;">Subject line:</p>
+					<h4 style="margin-top:0;">{{- subject_line_text|raw }}</h4>
+					<p style="margin-top:15px;margin-bottom:8px;font-size:.8em;">Pre header:</p>
+					<h4 style="margin-top:0;">{{- body_text|raw }}</h4>
+				</div>
+				<!-- SUBJECT LINE PROOF BLOCK END -->
+				{% endif %}
+				<table cellspacing="0" cellpadding="0" align="center" border="0">
+			 	 	<tr><td class="pre-content-text">{{ body_text|raw }}</td></tr>
+					<tr><td class="pre-content-text">
+						{% if lang_code == 'se' %}
+						Spara "yves-rocher.se@nl.yves-rocher.se" i din adressbok för att vara säker på att få mailen från Yves Rocher.
+						{% elseif lang_code == 'no' %}
+						Spar yves-rocher.no@nl.yves-rocher.no i adresseboken din for å være sikker på å få mailen fra Yves Rocher.
+						{% elseif lang_code == 'dk' %}
+						Gem yves-rocher.dk@nl.yves-rocher.dk i din adressebog for at være sikker på at få mailen fra Yves Rocher.
+						{% elseif lang_code == 'fi' %}
+						Tallenna osoite yves-rocher.fi@nl.yves-rocher.fi osoitekirjaasi, jotta saat varmasti postia Yves Rocher'lta.
+						{% endif %}
+					</td></tr>
+					<tr><td class="pre-content-text">
+						<a href="https://m.yves-rocher.{{ lang_code }}/control/unsubscribeNewsletter/?shopId=NLT&email={{ unsubscribe_mail }}&cm_mmc=nlt-_-{{ lang_code|upper }}-_-{{ unsub_tracker }}-_-avreg&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=header_unsub">
+							{% if lang_code == 'se' %}
+							Avsluta prenumeration
+							{% elseif lang_code == 'no' %}
+							Avslutte abonnement
+							{% elseif lang_code == 'dk' %}
+							Opsig abonnement
+							{% elseif lang_code == 'fi' %}
+							Peru uutiskirje
+							{% endif %}
+						</a>
+						&nbsp;|&nbsp;
+						<a href="{{ hosted_mail|raw }}">
+							{% if lang_code == 'se' %}
+							Kan du inte se nyhetsbrevet, klicka här!
+							{% elseif lang_code == 'no' %}
+							Kan du ikke se nyhetsbrevet, klikk her!
+							{% elseif lang_code == 'dk' %}
+							Hvis du ikke kan se nyhedsbrevet, klik her!
+							{% elseif lang_code == 'fi' %}
+							Jos haluat nähdä tämän uutiskirjeen kuvat, klikkaa tästä.
+							{% endif %}
+						</a>
+					</td></tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr><td class="header"><a href="https://m.yves-rocher.{{ lang_code }}/control/main?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=header">
+			<img class="realimg" align="top" src="images/template/header.jpg" alt="Header" width="600" border="0" /></a></td></tr>
+		<tr><td class="menu">
+			<table class="template-wrapper" cellspacing="0" cellpadding="0" align="center" border="0"><tr>
+			{% if lang_code == 'se' %}
+
+				<td><a href="http://www.yrdeal.com/static/ab/ab.html?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_act_beautiful">
+					<img class="realimg" align="top" src="images/template/menu1.jpg" width="100%" alt="Act Beautiful" border="0" /></a></td>
+
+				<td><a href="http://storelocator.yves-rocher.com/sv/europe/sweden/?utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_butiker">
+					<img class="realimg" align="top" src="images/template/menu2.jpg" width="100%" alt="Butiker" border="0" /></a></td>
+
+				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/promotions/?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_promotions">
+					<img class="realimg" align="top" src="images/template/menu3.jpg" width="100%" alt="Erbjudanden" border="0" /></a></td>
+
+			{% else %}
+
+				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/category/~category_id=1405_monthsnew_1?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_news">
+					<img class="realimg" align="top" src="images/template/menu1.jpg" width="100%" alt="News" border="0" /></a></td>
+
+				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/category/~category_id=1103_toplist_1?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_bestseller">
+					<img class="realimg" align="top" src="images/template/menu2.jpg" width="100%" alt="Bestseller" border="0" /></a></td>
+
+				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/promotions/?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_promotions">
+					<img class="realimg" align="top" src="images/template/menu3.jpg" width="100%" alt="Promotions" border="0" /></a></td>
+
+			{% endif %}
+			</tr></table>
+		</td></tr>
+
+		{# MAIN CONTENT #}
+
+		{% block main_content %}
+		{% endblock %}
+
+		<tr><td class="footer-reasons"><img class="realimg" align="top" src="images/template/footer-reasons.jpg" alt="Reasons" width="600" usemap="#nltsocial_map" border="0" /></td></tr>
+
+		<tr><td class="footer-text">
+		{% block footer_text %}
+			{% if lang_code == 'se' %}
+			<p>Detta erbjudande gäller t.o.m. den {{ campaign_date }}<br />och kan inte kombineras med andra erbjudanden.</p>
+			<p>Vill du avsluta din prenumeration på Yves Rochers nyhetsbrev, <a href="https://m.yves-rocher.{{ lang_code }}/control/unsubscribeNewsletter/?shopId=NLT&email={{ unsubscribe_mail }}&cm_mmc=nlt-_-{{ lang_code|upper }}-_-{{ unsub_tracker }}-_-avreg&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_unsub">klicka här.</a></p>
+			<p>Detta erbjudande har skickats till <span class="recipient-email">{{ unsubscribe_mail }}</span>.</p>
+			{% elseif lang_code == 'no' %}
+			<p>Dette tilbudet gjelder t.o.m. den {{ campaign_date }}<br />og kan ikke kombineres med andre tilbud.</p>
+			<p>Vil du avslutte ditt abonnement på Yves Rochers nyhetsbrev, <a href="https://m.yves-rocher.{{ lang_code }}/control/unsubscribeNewsletter/?shopId=NLT&email={{ unsubscribe_mail }}&cm_mmc=nlt-_-{{ lang_code|upper }}-_-{{ unsub_tracker }}-_-avreg&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_unsub">klikk her.</a></p>
+			<p>Dette tilbudet er blitt sendt til <span class="recipient-email">{{ unsubscribe_mail }}</span>.</p>
+			{% elseif lang_code == 'dk' %}
+			<p>Dette tilbud gælder t.o.m. den {{ campaign_date }}<br />og kan ikke kombineres med andre tilbud.</p>
+			<p>Ønsker du at opsige dit abonnement på Yves Rochers nyhedsbrev, <a href="https://m.yves-rocher.{{ lang_code }}/control/unsubscribeNewsletter/?shopId=NLT&email={{ unsubscribe_mail }}&cm_mmc=nlt-_-{{ lang_code|upper }}-_-{{ unsub_tracker }}-_-avreg&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_unsub">klik her.</a></p>
+			<p>Dette tilbud er blevet sendt til <span class="recipient-email">{{ unsubscribe_mail }}</span>.</p>
+			{% elseif lang_code == 'fi' %}
+			<p>Tarjous on voimassa {{ campaign_date }}<br />saakka, eikä sitä voi yhdistää muihin tarjouksiin.</p>
+			<p>Jos haluat lopettaa Yves Rocher'n uutiskirjeen tilauksen, <a href="https://m.yves-rocher.{{ lang_code }}/control/unsubscribeNewsletter/?shopId=NLT&email={{ unsubscribe_mail }}&cm_mmc=nlt-_-{{ lang_code|upper }}-_-{{ unsub_tracker }}-_-avreg&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_unsub">klikkaa tästä.</a></p>
+			<p>Tämä tarjous on lähetetty sähköpostiosoitteeseen <span class="recipient-email">{{ unsubscribe_mail }}</span>.</p>
+			{% endif %}
+		{% endblock %}
+		</td></tr>
+
+		{% if lang_code == 'se' or lang_code == 'no' %}
+		<tr><td class="footer-security"><a href="https://m.yves-rocher.{{ lang_code }}/control/dynpage/~struct=infopage/~page=tryggehandel?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_ecommercelogo">
+			<img class="realimg" align="top" src="images/template/footer-security.png" alt="Security" width="600" border="0" /></a></td></tr>
+		{% endif %}
+
+		<tr><td class="footer-bottom"><a href="https://m.yves-rocher.{{ lang_code }}/control/main?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_logo">
+			<img class="realimg" align="top" src="images/template/footer-trademark.png" alt="Trademark" width="600" border="0" /></a></td></tr>
+		</table>
+	</td>
+</tr>
+</table>
+
+
+{# SOCIAL IMAGE MAPS #}
+
+<map name="nltsocial_map" id="nltsocial_map">
+	{% if lang_code == 'se' %}
+		{% set fblang = 'sverige' %}
+	{% elseif lang_code == 'no' %}
+		{% set fblang = 'norge' %}
+	{% elseif lang_code == 'dk' %}
+		{% set fblang = 'danmark' %}
+	{% elseif lang_code == 'fi' %}
+		{% set fblang = 'suomi' %}
+	{% endif %}
+
+	<area shape="rect" coords="256,108,294,146" href="https://www.facebook.com/yvesrocher{{ fblang }}" alt="Facebook" />
+    <area shape="rect" coords="306,110,346,146" href="http://instagram.com/yvesrochernordic" alt="Instagram" />
+
+    {# <area shape="rect" coords="379,10,489,120" href="https://www.youtube.com/user/YvesRocherNordic" alt="YouTube" /> #}
+</map>
+
+<img src="http://pixel.monitor2.returnpath.net/pixel.gif?r=5390bc3b6f4ee6600a1eb1739f36cd775dcaa7ef" width="1" height="1" border="0" alt="" />
+<img src="http://pix.bfi0.com/t.gif?k=WWY0YXlSREhwbTlhWit5bWxuNGozaDJoSVhITjd6OElGc2VmR1UyUmIzMD0&c={{ nlt_tracker }}&s=#MemberID#" width="1" height="1" border="0" alt="" />
+</body>
+</html>
+
+
+{# MACRO #}
+
+{% macro item( glob, grid, img, link = '', utm = '', img_ext = '' ) %}
+
+	{% set num_per_page = '' %}
+
+	{% set lang = glob.lang_code %}
+	{% set tracker = glob.nlt_tracker %}
+
+	{% if not img_ext %}
+		{% set img_ext = 'jpg' %}
+	{% endif %}
+
+	{% if not utm %}
+		{% set utm = img %}
+	{% endif %}
+
+	{% if link starts with 'startpage' %}
+		{% set link = '/control/main' %}
+	{% endif %}
+
+	{% if link starts with '/control/category/~category_id=' %}
+		{% set num_per_page = 'numPerPage=48&' %}
+	{% endif %}
+
+	{% if img starts with 'gift' %}
+		{% set link = '/control/dynpage/~struct=gift' %}
+	{% endif %}
+
+
+	{% if grid == 'row' %}<tr><td class="main-content">{% endif %}
+	{% if grid == 'col start' %}<tr><td><table class="template-wrapper" cellspacing="0" cellpadding="0" align="center" border="0"><tr>{% endif %}
+	{% if grid starts with 'col' %}<td class="main-content">{% endif %}
+
+	{% if link starts with 'http' %}
+
+		{# External link #}
+
+		<a href="{{ link }}">
+			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" /></a>
+
+	{% elseif link starts with 'imgonly' %}
+
+		{# No link #}
+
+		<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" />
+
+	{% else %}
+
+		{# Internal link #}
+
+		<a href="https://m.yves-rocher.{{ lang }}{{ link }}?shopId=NLT&{{ num_per_page|raw }}utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ tracker }}&utm_content={{ utm }}">
+			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" /></a>
+
+	{% endif %}
+
+	{% if grid starts with 'col' %}</td>{% endif %}
+	{% if grid == 'col end' %}</tr></table></td></tr>{% endif %}
+	{% if grid == 'row' %}</td></tr>{% endif %}
+
+{% endmacro %}
