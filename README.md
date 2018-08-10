@@ -6,14 +6,17 @@
 
 Run `composer install`
 
-### Minimum requirement
+
+#### Minimum requirement
 
 composer
+
 php 7.1+ (with extension yaml)
+
 libyaml
+
 curl
 
-## Usage
 
 ### How to code newsletters
 
@@ -40,20 +43,30 @@ curl
 5. Edit _/newsletter/src/nl_x/lang_specific.twig_
 
 6. Run _/app/generate_newsletter.php_ by starting terminal.app (macOS) and type:
+
    `cd ~/yrse_nl_factory/app/bin`
+
    `./generate_newsletter.php 1_jan`
+
 
 7. Proof newsletters found in _/newsletter/dist/_
 
 8. Upload images to FTP server.
+
    At the command prompt type: (Terminal)
+
    `cd ~/yrse_nl_factory/app/bin` You should be at this location already. (:
+
    `./ftp_images.php`
 
+
 9. Prepare html.
+
    `./premail_newsletter.php`
 
+
 10. Proof html found in _/Harmony/html/_
+
 
 #### Push newsletter to Harmony
 
