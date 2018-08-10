@@ -27,6 +27,7 @@ curl
 2. Create a new directory in **_/newsletter/src/_** and name it accordingly to the current campaign month. (ex. 1_jan)
 
 3. Copy twig template file **_/newsletter/templates/campaign_YYMM_MONTH.twig_** to **_/newsletter/src/[1_jan]/_**
+
    Rename it accordingly to the current campaign month. (ex. campaign_1801_januari.twig)
 
 
