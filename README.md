@@ -18,7 +18,7 @@ libyaml
 curl
 
 
-### How to code newsletters
+## How to code newsletters
 
 #### Prepare new campaign
 
