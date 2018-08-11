@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proof Nyhetsbrev</title>
+	<style type="text/css">
+		body {
+			background: #fff;
+			font-family: sans-serif;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li {
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+		.wrapper {
+			margin: 5% 10%;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="wrapper">
+		<h1>Nyhetsbrev Januari 2018</h1>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		(function($, win, doc, undefined) {
+
+			var camp	= 'jan18';
+			var count 	= 10;
+
+			var list = $('<ul />').appendTo('.wrapper');
+			var item, link, no;
+
+
+			for (var i = 0; i < count; i++) {
+
+				link = $('<a/>');
+				item = $('<li/>');
+
+				no = i + 1;
+				link
+					.attr({
+						'href': '#',
+						'data-nl': camp + '_' + no
+					})
+					.text('NL ' + no);
+
+				link.appendTo(
+					item.appendTo(list)
+				);
+			}
+
+			$('a').on('click', function(e) {
+				e.preventDefault();
+
+				var link = $(this).data('nl');
+
+				win.open(link + '/se/index.html');
+				win.open(link + '/no/index.html');
+				win.open(link + '/dk/index.html');
+				win.open(link + '/fi/index.html');
+			});
+
+		})(jQuery, window, document);
+	</script>
+</body>
+</html>
