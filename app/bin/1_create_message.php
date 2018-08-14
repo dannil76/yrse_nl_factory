@@ -248,12 +248,11 @@ foreach( glob( RECIPE_PATH . '*.yaml' ) as $recipeFile )
 	}
 }
 
-
 if( strlen( $errMessage ) > 0 )
 {
 	echo $errMessage . NL;
 }
 else
 {
-	echo NL . 'Done!' . NL;
+	execQueue();
 }

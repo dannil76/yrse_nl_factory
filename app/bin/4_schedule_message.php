@@ -121,5 +121,5 @@ if( strlen( $errMessage ) > 0 )
 }
 else
 {
-	echo NL . 'Done!' . NL;
+	execQueue();
 }

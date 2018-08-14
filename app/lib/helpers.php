@@ -102,3 +102,28 @@ function clog( $data, $halt = true )
 {
 	debug( $data, $halt, false );
 }
+
+function prompt()
+{
+	$stdin = fopen( 'php://stdin', 'r' );
+	$answer = preg_replace( '{\r?\n$}D', '', fgets($stdin, 4096) );
+	fclose($stdin);
+
+	return $answer;
+}
+
+function execQueue()
+{
+	echo NL . 'Execute queue now? (yes or no): ';
+
+	$usrInput = prompt();
+
+	if( $usrInput === 'yes' )
+	{
+		passthru('./execute_queue.php');
+	}
+	else
+	{
+		echo NL . 'Done!' . NL;
+	}
+}
