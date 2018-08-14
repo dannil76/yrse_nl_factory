@@ -93,10 +93,6 @@ curl
    In the terminal run
 
    `./1_create_message.php`
- 
-   wait a moment... then run
-
-   `./execute_queue.php`
 
 
 4. Send proof 
@@ -104,10 +100,6 @@ curl
    In the terminal run
 
    `./2_proof_message.php`
- 
-   wait a moment... then run
-
-   `./execute_queue.php`
 
 
 5. Proof ok? Approve message
@@ -116,10 +108,6 @@ curl
 
    `./3_approve_message.php`
  
-   wait a moment... then run
-
-   `./execute_queue.php`
-
 
 6. Schedule message
 
@@ -127,8 +115,5 @@ curl
 
    `./4_schedule_message.php`
  
-   wait a moment... then run
-
-   `./execute_queue.php`
 
 DONE!
