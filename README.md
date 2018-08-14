@@ -6,7 +6,7 @@
 
 2. Open terminal and type `cd ~/yrse_nl_factory/app`
 
-3. Run `composer install` (You need **commposer** to be installed. Read more at https://getcomposer.org/download/)
+3. Run `composer install` (You need **composer** to be installed. Read more at https://getcomposer.org/download/)
 
 
 #### Minimum requirement
@@ -43,7 +43,7 @@ curl
 
 3. Slice PSD
 
-4. Move sliced images (ie **_/psd_slices/_current/[se,no,dk,fi]_** to the newly created nl_x folder in **_newsletter/src/[1_jan]/_**
+4. Move sliced images (ie **_/psd_slices/\_current/[se,no,dk,fi]_** to the newly created nl_x folder in **_/newsletter/src/[1_jan]/_**
 
 5. Edit **_/newsletter/src/nl_x/lang_specific.twig_**
 
@@ -56,7 +56,7 @@ curl
    5.4 Save it!
 
 
-6. Generate html by starting terminal.app (macOS) and type:
+6. Generate newsletter html. In terminal type:
 
    `cd ~/yrse_nl_factory/app/bin`
 
@@ -74,7 +74,7 @@ curl
    `./ftp_images.php`
 
 
-9. Prepare html.
+9. Prepare html for Harmony.
 
    `./premail_newsletter.php`
 
@@ -92,43 +92,43 @@ curl
 
    In the terminal run
 
-   3.1 `./1_create_message.php`
+   `./1_create_message.php`
  
    wait a moment... then run
 
-   3.2 `./execute_queue.php`
+   `./execute_queue.php`
 
 
 4. Send proof 
 
    In the terminal run
 
-   4.1 `./2_proof_message.php`
+   `./2_proof_message.php`
  
    wait a moment... then run
 
-   4.2 `./execute_queue.php`
+   `./execute_queue.php`
 
 
 5. Proof ok? Approve message
 
    In the terminal run
 
-   5.1 `./3_approve_message.php`
+   `./3_approve_message.php`
  
    wait a moment... then run
 
-   5.2 `./execute_queue.php`
+   `./execute_queue.php`
 
 
 6. Schedule message
 
    In the terminal run
 
-   6.1 `./4_schedule_message.php`
+   `./4_schedule_message.php`
  
    wait a moment... then run
 
-   6.2 `./execute_queue.php`
+   `./execute_queue.php`
 
 DONE!
