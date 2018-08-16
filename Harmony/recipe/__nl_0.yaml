@@ -24,6 +24,7 @@ base: &base
     - snezana.gusatovic@gmail.com
     - richard.arthursson@yves-rocher.se
     - richard.arthursson@communityisland.com
+    - richard@addamig.se
 
   send_date: 2018-01-01 00:00
 
