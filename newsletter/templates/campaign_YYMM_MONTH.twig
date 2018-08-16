@@ -43,22 +43,48 @@
 <!-- TRACKER_CODE: {{ nlt_tracker }} -->
 <!-- http://pictures.yvesrocher.com/{% if lang_code == 'fi' %}FI{% else %}SE{% endif %}/{{ nlt_tracker }}/{{ lang_code }}/images -->
 <!-- !! DO NOT EDIT !! -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Yves Rocher - {{ lang_code|upper }}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 " />
 <style type="text/css">
 
 	{% set text_color = '#878585' %}
 
+	table {
+		border-collapse: collapse;
+		mso-table-lspace: 0px;
+		mso-table-rspace: 0px;
+	}
+
+	td, a, span {
+		border-collapse: collapse;
+		mso-line-height-rule: exactly;
+	}
+
 	.realbody {
-		margin: 0;
-		padding: 0;
+		margin: 0 !important;
+		padding: 0 !important;
+		-webkit-font-smoothing: antialiased !important;
+		-webkit-text-size-adjust: 100% !important;
+			-ms-text-size-adjust: 100% !important;
 	}
 
 	.realimg {
 		border: 0;
+		outline: none;
 		display: block;
+	}
+
+	.realimg.full-width {
+		width: 100%;
+		max-width: 640px;
+	}
+
+	.realimg.adv {
+		width: 100%;
 	}
 
 	.body {
@@ -97,8 +123,17 @@
 
 	.template-wrapper {
 		margin: auto;
-		width: 600px;
+		width: 640px;
 	}
+
+	{# .link {
+		border-bottom: 1px solid #000000;
+		font-family: sans-serif;
+		font-size: 16px;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 18px 0;
+	} #}
 
 	.footer-text {
 		background: #ffffff;
@@ -116,6 +151,7 @@
 	.recipient-email {
 		text-transform: lowercase;
 	}
+
 {% block css_styles %}
 {% endblock %}
 </style>
@@ -181,30 +217,44 @@
 		</tr>
 
 		<tr><td class="header"><a href="https://m.yves-rocher.{{ lang_code }}/control/main?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=header">
-			<img class="realimg" align="top" src="images/template/header.jpg" alt="Header" width="600" border="0" /></a></td></tr>
+			<img class="realimg full-width" align="top" src="images/template/header.jpg" width="640" alt="Header" border="0" /></a></td></tr>
 		<tr><td class="menu">
 			<table class="template-wrapper" cellspacing="0" cellpadding="0" align="center" border="0"><tr>
 			{% if lang_code == 'se' %}
 
 				<td><a href="http://www.yrdeal.com/static/ab/ab.html?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_act_beautiful">
-					<img class="realimg" align="top" src="images/template/menu1.jpg" width="100%" alt="Act Beautiful" border="0" /></a></td>
+					<img class="realimg" align="top" src="images/template/menu1.jpg" width="" alt="Act Beautiful" border="0" /></a></td>
 
 				<td><a href="http://storelocator.yves-rocher.com/sv/europe/sweden/?utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_butiker">
-					<img class="realimg" align="top" src="images/template/menu2.jpg" width="100%" alt="Butiker" border="0" /></a></td>
+					<img class="realimg" align="top" src="images/template/menu2.jpg" width="" alt="Butiker" border="0" /></a></td>
 
 				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/promotions/?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_promotions">
-					<img class="realimg" align="top" src="images/template/menu3.jpg" width="100%" alt="Erbjudanden" border="0" /></a></td>
+					<img class="realimg" align="top" src="images/template/menu3.jpg" width="" alt="Erbjudanden" border="0" /></a></td>
 
 			{% else %}
 
+				{# <td class="link">
+					<span>Nyheder</span>
+				</td>
+				<td class="link">
+					<span>Bestseller</span>
+				</td>
+				<td class="link">
+					<span>Gør et fund</span>
+				</td> #}
+
+				<td><img class="realimg" align="top" src="images/template/menu-gutter.jpg" width="" alt="" border="0" /></td>
+
 				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/category/~category_id=1405_monthsnew_1?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_news">
-					<img class="realimg" align="top" src="images/template/menu1.jpg" width="100%" alt="News" border="0" /></a></td>
+					<img class="realimg" align="top" src="images/template/menu1.jpg" width="" alt="News" border="0" /></a></td>
 
 				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/category/~category_id=1103_toplist_1?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_bestseller">
-					<img class="realimg" align="top" src="images/template/menu2.jpg" width="100%" alt="Bestseller" border="0" /></a></td>
+					<img class="realimg" align="top" src="images/template/menu2.jpg" width="" alt="Bestseller" border="0" /></a></td>
 
-				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/promotions/?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_promotions">
-					<img class="realimg" align="top" src="images/template/menu3.jpg" width="100%" alt="Promotions" border="0" /></a></td>
+				<td><a href="https://m.yves-rocher.{{ lang_code }}/control/category/~category_id=1808fyndndf?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=menu_promotions">
+					<img class="realimg" align="top" src="images/template/menu3_r2.jpg" width="" alt="Fyndshop" border="0" /></a></td>
+
+				<td><img class="realimg" align="top" src="images/template/menu-gutter.jpg" width="" alt="" border="0" /></td>
 
 			{% endif %}
 			</tr></table>
@@ -213,9 +263,40 @@
 		{# MAIN CONTENT #}
 
 		{% block main_content %}
+
+			{% if lang_code == 'se' %}
+
+				<tr><td class="main-content"><a href="https://m.yves-rocher.{{ lang_code }}/control/main?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=startpage">
+					<img class="realimg full-width" align="top" src="images/template/go-to-home-page.jpg" width="640" alt="Startpage" border="0" /></a></td></tr>
+
+			{% else %}
+
+				<tr><td class="main-content">
+					<img class="realimg full-width" align="top" src="images/template/go-to-home-page.jpg" width="640" alt="Startpage" border="0" /></td></tr>
+
+			{% endif %}
+
 		{% endblock %}
 
-		<tr><td class="footer-reasons"><img class="realimg" align="top" src="images/template/footer-reasons.jpg" alt="Reasons" width="600" usemap="#nltsocial_map" border="0" /></td></tr>
+		{% if lang_code == 'se' %}
+			{% set fblang = 'sverige' %}
+		{% elseif lang_code == 'no' %}
+			{% set fblang = 'norge' %}
+		{% elseif lang_code == 'dk' %}
+			{% set fblang = 'danmark' %}
+		{% elseif lang_code == 'fi' %}
+			{% set fblang = 'suomi' %}
+		{% endif %}
+
+		<tr><td class="footer-reasons">
+			<img class="realimg full-width" align="top" src="images/template/footer-reasons.jpg" width="640" alt="Reasons" border="0" />
+		</td></tr>
+		<tr><td class="footer-social">
+			<table class="template-wrapper" cellspacing="0" cellpadding="0" align="center" border="0"><tr>
+				<td><a href="https://www.facebook.com/yvesrocher{{ fblang }}"><img class="realimg" align="top" src="images/template/facebook-logo.jpg" width="" alt="Facebook" border="0" /></a></td>
+				<td><a href="http://instagram.com/yvesrochernordic"><img class="realimg" align="top" src="images/template/instagram-logo.jpg" width="" alt="Instagram" border="0" /></a></td>
+			</tr></table>
+		</td></tr>
 
 		<tr><td class="footer-text">
 		{% block footer_text %}
@@ -241,35 +322,15 @@
 
 		{% if lang_code == 'se' or lang_code == 'no' %}
 		<tr><td class="footer-security"><a href="https://m.yves-rocher.{{ lang_code }}/control/dynpage/~struct=infopage/~page=tryggehandel?shopId=NLT&numPerPage=48&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_ecommercelogo">
-			<img class="realimg" align="top" src="images/template/footer-security.png" alt="Security" width="600" border="0" /></a></td></tr>
+			<img class="realimg full-width" align="top" src="images/template/footer-security.png" width="640" alt="Security" border="0" /></a></td></tr>
 		{% endif %}
 
 		<tr><td class="footer-bottom"><a href="https://m.yves-rocher.{{ lang_code }}/control/main?shopId=NLT&utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ nlt_tracker }}&utm_content=footer_logo">
-			<img class="realimg" align="top" src="images/template/footer-trademark.png" alt="Trademark" width="600" border="0" /></a></td></tr>
+			<img class="realimg full-width" align="top" src="images/template/footer-trademark.png" width="640" alt="Trademark" border="0" /></a></td></tr>
 		</table>
 	</td>
 </tr>
 </table>
-
-
-{# SOCIAL IMAGE MAPS #}
-
-<map name="nltsocial_map" id="nltsocial_map">
-	{% if lang_code == 'se' %}
-		{% set fblang = 'sverige' %}
-	{% elseif lang_code == 'no' %}
-		{% set fblang = 'norge' %}
-	{% elseif lang_code == 'dk' %}
-		{% set fblang = 'danmark' %}
-	{% elseif lang_code == 'fi' %}
-		{% set fblang = 'suomi' %}
-	{% endif %}
-
-	<area shape="rect" coords="256,108,294,146" href="https://www.facebook.com/yvesrocher{{ fblang }}" alt="Facebook" />
-    <area shape="rect" coords="306,110,346,146" href="http://instagram.com/yvesrochernordic" alt="Instagram" />
-
-    {# <area shape="rect" coords="379,10,489,120" href="https://www.youtube.com/user/YvesRocherNordic" alt="YouTube" /> #}
-</map>
 
 <img src="http://pixel.monitor2.returnpath.net/pixel.gif?r=5390bc3b6f4ee6600a1eb1739f36cd775dcaa7ef" width="1" height="1" border="0" alt="" />
 <img src="http://pix.bfi0.com/t.gif?k=WWY0YXlSREhwbTlhWit5bWxuNGozaDJoSVhITjd6OElGc2VmR1UyUmIzMD0&c={{ nlt_tracker }}&s=#MemberID#" width="1" height="1" border="0" alt="" />
@@ -281,10 +342,10 @@
 
 {% macro item( glob, grid, img, link = '', utm = '', img_ext = '' ) %}
 
-	{% set num_per_page = '' %}
+	{% set num_per_page 	= '' %}
 
-	{% set lang = glob.lang_code %}
-	{% set tracker = glob.nlt_tracker %}
+	{% set lang 			= glob.lang_code %}
+	{% set tracker 			= glob.nlt_tracker %}
 
 	{% if not img_ext %}
 		{% set img_ext = 'jpg' %}
@@ -296,9 +357,7 @@
 
 	{% if link starts with 'startpage' %}
 		{% set link = '/control/main' %}
-	{% endif %}
-
-	{% if link starts with '/control/category/~category_id=' %}
+	{% elseif link starts with '/control/category/~category_id=' %}
 		{% set num_per_page = 'numPerPage=48&' %}
 	{% endif %}
 
