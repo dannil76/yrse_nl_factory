@@ -316,20 +316,20 @@
 		{# External link #}
 
 		<a href="{{ link }}">
-			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" /></a>
+			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="" border="0" /></a>
 
 	{% elseif link starts with 'imgonly' %}
 
 		{# No link #}
 
-		<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" />
+		<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="" border="0" />
 
 	{% else %}
 
 		{# Internal link #}
 
 		<a href="https://m.yves-rocher.{{ lang }}{{ link }}?shopId=NLT&{{ num_per_page|raw }}utm_source=newsletter&utm_medium=email&utm_campaign=nlt_{{ tracker }}&utm_content={{ utm }}">
-			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="100%" border="0" /></a>
+			<img class="realimg" align="top" src="images/content/{{ img }}.{{ img_ext }}" alt="{{ utm }}" width="" border="0" /></a>
 
 	{% endif %}
 
