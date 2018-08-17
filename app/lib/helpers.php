@@ -114,16 +114,16 @@ function prompt()
 
 function execQueue()
 {
-	echo NL . 'Execute queue now? (yes or no): ';
+	echo NL . NL . 'Execute queue? (yes or no): ';
 
 	$usrInput = prompt();
 
-	if( $usrInput === 'yes' )
+	if( $usrInput === 'yes' || $usrInput === 'y' )
 	{
 		passthru('./execute_queue.php');
+		return true;
 	}
-	else
-	{
-		echo NL . 'Done!' . NL;
-	}
+
+	echo NL . 'Remeber to delete all queue files or run ./execute_queue.php before you run the next script!' . NL . NL;
+	return false;
 }
