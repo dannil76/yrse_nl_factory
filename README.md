@@ -8,6 +8,9 @@
 
 3. Run `composer install` (You need **composer** to be installed. Read more at https://getcomposer.org/download/)
 
+4. Run `sudo gem install premailer && gem install nokogiri` (You need **Ruby** to be installed)
+
+   Enter your macOS user password when asked.
 
 #### Minimum requirement
 
