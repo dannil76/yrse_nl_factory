@@ -13,25 +13,16 @@ require_once __DIR__ . '/../lib/_init.php';
 
 $languages = ['se', 'no', 'dk', 'fi'];
 
-use Adamlc\Premailer\Command;
-use Adamlc\Premailer\Email;
-use PHPWee\HtmlMin;
+use Yrse\Util\Command;
+use Yrse\Util\Email;
+// use PHPWee\HtmlMin;
 
 define( 'BASE_PATH',		APPLICATION_PATH . '/../' );
 define( 'SRC_PATH',			BASE_PATH . '/newsletter/dist/' );			// jun15_3/se,no,dk,fi/index.html
 define( 'DIST_PATH',		BASE_PATH . '/Harmony/html/' );				// NLx
-define( 'IMG_BASE_URL', 	'pictures.yvesrocher.com' );				// Where to find images
+define( 'IMG_BASE_URL', 	'http://pictures.yvesrocher.com' );			// Where to find images
 
-$curlOpt = [
-	CURLOPT_VERBOSE					=> false,
-	CURLOPT_URL 					=> 'http://premailer.dialect.ca/api/0.1/documents',
-	CURLOPT_POST 					=> true,
-	CURLOPT_RETURNTRANSFER 			=> true,
-	CURLOPT_FORBID_REUSE 			=> true,
-	CURLOPT_FRESH_CONNECT 			=> true,
-	CURLOPT_NOPROGRESS 				=> false,
-	CURLOPT_PROGRESSFUNCTION 		=> function() { echo '.'; }
-];
+$premailer = new Email( new Command('/usr/local/bin/premailer') );
 
 $errMessage = '';
 
@@ -67,14 +58,11 @@ foreach( new DirectoryIterator( SRC_PATH ) as $fileInfo )
 		$htmlRaw = trim( file_get_contents( $nlSrcLangPath . '/index.html' ) );
 
 
-		// Remove local proof block
+		// Remove proof block
 		//
 
 		$htmlRaw = preg_replace( '/\s*<!--\sSUBJECT\sLINE\sPROOF\sBLOCK\sSTART\s-->.*<!--\sSUBJECT\sLINE\sPROOF\sBLOCK\sEND\s-->/s', null, $htmlRaw );
 
-
-		// Premailing using API
-		//
 
 		echo 'Premailing: ' . $htmlSaveFile;
 
@@ -82,23 +70,11 @@ foreach( new DirectoryIterator( SRC_PATH ) as $fileInfo )
 			? '/FI/' . $nlName . '/fi/'
 			: '/SE/' . $nlName . '/' . $lang . '/';
 
-		$ch = curl_init();
-		curl_setopt_array( $ch, $curlOpt );
+		$premailer->setBody($htmlRaw);
+		$premailedHtml = $premailer->getHtml(IMG_BASE_URL . $imageUrl);
 
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, 'base_url=http://' . IMG_BASE_URL
-			. $imageUrl
-			. '&preserve_styles=false&remove_classes=true&adapter=nokogiri&html='
-			. rawurlencode( $htmlRaw )
-		);
-
-		$result = curl_exec( $ch );
-		$httpStatus = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-
-		if( $httpStatus == 201 )
+		if( strlen($premailedHtml) > 0 )
 		{
-			$jsonResult = json_decode( $result );
-
-			$premailedHtml = file_get_contents( $jsonResult->documents->html );
 			$premailedHtml = html_entity_decode( $premailedHtml, ENT_XHTML );
 
 			file_put_contents(
@@ -107,15 +83,13 @@ foreach( new DirectoryIterator( SRC_PATH ) as $fileInfo )
 				str_replace( '&amp;', '&', $premailedHtml )
 			);
 
-			echo ' ' . $jsonResult->message . NL;
+			echo ' ... OK!' . NL;
 		}
 		else
 		{
-			$errMessage .= 'Error with status code: ' . $httpStatus . NL;
+			$errMessage .= 'Error premailer!';
 			break;
 		}
-
-		curl_close( $ch );
 	}
 
 	echo NL;
@@ -128,5 +102,4 @@ if( strlen( $errMessage ) > 0 )
 else
 {
 	echo 'Newsletters premailed successfully!' . NL;
-	// passthru( 'open ' . DIST_PATH );
 }
